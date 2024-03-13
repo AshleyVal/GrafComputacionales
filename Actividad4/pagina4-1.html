@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Pagina 4</title>
+  <style>
+    canvas {
+      border: 3px solid brown;
+      background-color: white;
+    }
+  </style>
+
+  <script>
+    //window.onload=function(){}
+    var x = 0;
+    var dx = 3;
+    var x = Math.random() * 800;
+    var y = Math.random() * 600;
+    var dx = 4;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      console.log('animando');
+      var canvas = document.getElementById("micanvas");
+      var context = canvas.getContext("2d");
+      context.clearRect(0, 0, innerWidth, innerHeight);
+      context.fillStyle = "burlywood"
+      context.fillRect(x, 10, 100, 100);
+
+      context.fillStyle = "blanchedalmond"
+      context.fillRect(y, x, 100, 100, 100);
+
+
+      //console.log('animando');
+      context.font = '30pt Calibri';
+      context.fillStyle = 'black';
+      context.fillText('Hello World!', x, y);
+      //context.fillStyle = 'rgba(255,0,0,1)';
+      context.fillRect(x, 300, 150, 50);
+
+
+      if (x > 800 || x < 0) {
+        dx = -dx;
+      }
+
+      x += dx;
+    }
+    animate();
+  </script>
+
+</head>
+
+<body>
+  <canvas id="micanvas" width="800" height="600"></canvas>
+</body>
+
+</html>

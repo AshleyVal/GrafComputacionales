@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+  body {
+    background-color: #add8e6;
+    text-align: center;
+    image-orientation: center;
+  }
+
+  canvas {
+    border: 3px solid black;
+    background-color: white;
+
+  }
+</style>
+
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <script src="07-key codes actividad.js"></script>
+  <script>
+    window.onload = function () {
+      //Our code here...
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+
+
+
+      context.font = '40pt Calibri';
+      context.fillStyle = 'black';
+      context.fillText('Presiona las teclas A, E, I, O, U', 65, 100);
+
+      context.font = '25pt Calibri';
+      context.fillStyle = '#add8e6';
+      context.fillText('(Personajes)', 310, 170);
+
+      var imagen = new Image();
+      imagen.src = "Disney.png";
+      imagen.onload = function () {
+        context.drawImage(imagen, 210, 270, 350, 200);
+      };
+
+      var x = 50;
+      var y = 50;
+
+      function onKeyboardEvent(event) {
+        switch (event.keyCode) {
+
+          case keycode.A:
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            y -= 5;
+
+            context.font = '40pt Calibri';
+            context.fillStyle = 'black';
+            context.fillText('Princesa Aurora', 235, 100);
+
+
+            var imagen = new Image();
+            imagen.src = "Aurora.png";
+            imagen.onload = function () {
+              context.drawImage(imagen, 240, 150, 350, 430);
+            }
+
+            break;
+
+          case keycode.E:
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            y -= 5;
+
+            context.font = '40pt Calibri';
+            context.fillStyle = 'black';
+            context.fillText('Princesa Elsa', 260, 100);
+
+            var imagen = new Image();
+            imagen.src = "Elsa.png";
+            imagen.onload = function () {
+              context.drawImage(imagen, 330, 160, 200, 400);
+            }
+            break;
+
+          case keycode.I:
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            y -= 5;
+
+            context.font = '40pt Calibri';
+            context.fillStyle = 'black';
+            context.fillText('Igor', 350, 120);
+
+            var imagen = new Image();
+            imagen.src = "Igor.webp";
+            imagen.onload = function () {
+              context.drawImage(imagen, 270, 210, 250, 250);
+            }
+            break;
+
+          case keycode.O:
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            y -= 5;
+
+            context.font = '40pt Calibri';
+            context.fillStyle = 'black';
+            context.fillText('Olaf', 350, 120);
+
+            var imagen = new Image();
+            imagen.src = "Olaf.webp";
+            imagen.onload = function () {
+              context.drawImage(imagen, 300, 200, 200, 300);
+            }
+            break;
+
+          case keycode.U:
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            y -= 5;
+
+            context.font = '40pt Calibri';
+            context.fillStyle = 'black';
+            context.fillText('Ursula', 330, 120);
+
+            var imagen = new Image();
+            imagen.src = "Ursula.webp";
+            imagen.onload = function () {
+              context.drawImage(imagen, 220, 200, 350, 350);
+            }
+            break;
+
+
+          default:
+            console.log(event.keyCode);
+        }
+      }
+
+      window.addEventListener('keydown', onKeyboardEvent, false);
+    };
+  </script>
+</body>
+
+</html>

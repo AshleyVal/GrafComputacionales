@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Pagina 3</title>
+  <style>
+    body {
+
+      background-color: white;
+      text-align: center;
+    }
+
+    canvas {
+      /* border: 3px solid brown;*/
+      background-color: black;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      var canvas = document.getElementById("micanvas");
+      var context = canvas.getContext("2d");
+      context.fillStyle = "burlywood"
+      context.fillRect(10, 10, 100, 100);
+
+      context.fillStyle = "blanchedalmond"
+      context.fillRect(100, 150, 200, 200);
+
+      context.fillStyle = "white"
+      context.fillRect(150, 50, 100, 250);
+
+      context.fillStyle = "burlywood"
+      context.fillRect(550, 50, 100, 250);
+
+      context.fillStyle = "rgba(0, 0, 255, 0.5)"
+      context.fillRect(150, 300, 200, 150);
+
+    }
+  </script>
+
+
+</head>
+
+<body>
+  <canvas id="micanvas" width="800" height="600"></canvas>
+</body>
+
+</html>
