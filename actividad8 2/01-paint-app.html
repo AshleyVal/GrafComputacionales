@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Paint and Drawing App</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      text-align: center;
+      width: 100%;
+      background-color: whitesmoke;
+      background-image: url('FondoPaintApp.png');
+    }
+
+    .container {
+      margin: 0px auto;
+      text-align: center;
+      width: 1000px;
+    }
+
+    button {
+      width: 100px;
+      height: 50px;
+      margin: 10px;
+    }
+
+    button:hover {
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-family: "times new roman";
+      font-weight: 900;
+      font-style: bold;
+      color: black;
+    }
+
+    #azul {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: #33ACFF;
+      color: white;
+    }
+
+    #rojo {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: #D80A0A;
+      color: white;
+    }
+
+    #verde {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: #9DDC03;
+      color: white;
+    }
+
+    #morado {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: #8567BF;
+      color: white;
+    }
+
+    #naranja {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: #F7882C;
+      color: white;
+    }
+
+    #grosor1 {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: white;
+      color: black;
+    }
+
+    #grosor5 {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: white;
+      color: black;
+    }
+
+    #grosor10 {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      background-color: white;
+      color: black;
+    }
+
+    #borrar {
+      font-family: "Tahoma";
+      font-weight: 500;
+      font-style: bold;
+      width: 300px;
+      background-color: black;
+      color: white;
+    }
+
+    canvas {
+      border: 10px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <h1> Paint and Drawing </h1>
+  <div id="container">
+    <div class="colores">
+      <button id="azul" type="button" value="#CDB4DB">Azul</button>
+      <button id="rojo" type="button" value="#FFC8DD">Rojo</button>
+      <button id="verde" type="button" value="#FFAFCC">Verde</button>
+      <button id="morado" type="button" value="#BDE0FE">Morado</button>
+      <button id="naranja" type="button" value="#A2D2FF">Naranja</button>
+    </div>
+    <div id="otros">
+      <button id="grosor1" type="button" value="1">Fino</button>
+      <button id="grosor5" type="button" value="5">Grueso</button>
+      <button id="grosor10" type="button" value="10">Extras Grueso</button>
+    </div>
+
+    <div id="otros">
+      <button id="borrar" type="button">Borrar Todo</button>
+    </div>
+    <canvas id="canvas" width="950px" height="650px"></canvas>
+
+    <script src="utils.js"></script>
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+
+        var grosorLinea = 1;
+
+        canvas.addEventListener('mousedown', function () {
+          context.beginPath();
+          context.moveTo(mouse.x, mouse.y);
+          context.lineWidth = grosorLinea;
+          canvas.addEventListener('mousemove', onMouseMove, false);
+        }, false);
+
+        canvas.addEventListener('mouseup', function () {
+          canvas.removeEventListener('mousemove', onMouseMove, false);
+        }, false);
+
+        function onMouseMove() {
+          context.lineTo(mouse.x, mouse.y);
+          context.stroke();
+        }
+
+        var colores = document.getElementsByClassName('colores')[0];
+        colores.addEventListener('click', function (event) {
+          context.strokeStyle = event.target.value;
+
+        })
+
+        var clearButton = document.getElementById('borrar');
+        clearButton.addEventListener('click', function () {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+        })
+
+        document.getElementById('grosor1').addEventListener('click', function () {
+          grosorLinea = 1;
+        });
+
+        document.getElementById('grosor5').addEventListener('click', function () {
+          grosorLinea = 5;
+        });
+
+        document.getElementById('grosor10').addEventListener('click', function () {
+          grosorLinea = 10;
+        });
+      };
+    </script>
+  </div>
+</body>
+
+</html>
