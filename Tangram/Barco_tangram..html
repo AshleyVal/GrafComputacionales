@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barco con Tangram en Canvas</title>
+    <style>
+        body {
+            text-align: center;
+            width: 100%;
+            background-color: whitesmoke;
+            background-image: url('Fondo mar.png');
+
+        }
+
+        canvas {
+            border: 5px solid black;
+            background-color: whitesmoke;
+        }
+
+        h1 {
+            font-family: "Tahoma";
+            font-weight: 1000;
+            font-size: 35px;
+            font-style: bold;
+            color: darkcyan;
+        }
+
+        h2 {
+            font-family: "Tahoma";
+            font-weight: 300;
+            font-size: 15px;
+            font-style: normal;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> - - Barquito - -</h1>
+    <h2> "Figura con tangram"</h2>
+
+    <canvas id="canvas" width="800" height="700"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Definir colores para cada figura
+        const colores = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FFA500', '#800080', '#FFC0CB'];
+
+        // triángulo vela
+        ctx.fillStyle = colores[0];
+        ctx.beginPath();
+        ctx.moveTo(250, 135);
+        ctx.lineTo(400, 280);
+        ctx.lineTo(250, 430);
+        ctx.closePath();
+        ctx.fill();
+
+        // Dibujar triángulo 2 vela 
+        ctx.fillStyle = colores[2];
+        ctx.beginPath();
+        ctx.moveTo(250, 430);
+        ctx.lineTo(550, 430);
+        ctx.lineTo(400, 280);
+        ctx.closePath();
+        ctx.fill();
+
+        // triángulo 1 de la base
+        ctx.fillStyle = colores[3];
+        ctx.beginPath();
+        ctx.moveTo(100, 430);
+        ctx.lineTo(200, 600);
+        ctx.lineTo(250, 430);
+        ctx.closePath();
+        ctx.fill();
+
+        // triángulo 2 de la base
+        ctx.fillStyle = colores[4];
+        ctx.beginPath();
+        ctx.moveTo(250, 430);
+        ctx.lineTo(250, 600);
+        ctx.lineTo(200, 600);
+        ctx.closePath();
+        ctx.fill();
+
+        // cuadrado base
+        ctx.fillStyle = colores[5];
+        ctx.beginPath();
+        ctx.moveTo(250, 430);
+        ctx.lineTo(425, 430);
+        ctx.lineTo(425, 600);
+        ctx.lineTo(250, 600);
+        ctx.closePath();
+        ctx.fill();
+
+        // triangulo 3 base
+        ctx.fillStyle = colores[6];
+        ctx.beginPath();
+        ctx.moveTo(425, 430);
+        ctx.lineTo(550, 430);
+        ctx.lineTo(425, 600);
+        ctx.closePath();
+        ctx.fill();
+
+        // cuadrado deforme base
+        ctx.fillStyle = colores[1];
+        ctx.beginPath();
+        ctx.moveTo(550, 430);
+        ctx.lineTo(700, 430);
+        ctx.lineTo(575, 600);
+        ctx.lineTo(425, 600);
+        ctx.closePath();
+        ctx.fill();
+
+    </script>
+</body>
+
+</html>
