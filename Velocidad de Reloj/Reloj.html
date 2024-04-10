@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Torre de Reloj</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: skyblue;
+            text-align: center;
+            width: 100%;
+            background-image: url('Londres.jpg');
+
+        }
+
+        /* body {
+            <img id="miImagen" src="" alt="Imagen">
+        }*/
+
+
+        h1 {
+            font-family: "Tahoma";
+            font-weight: 600;
+            font-style: 500px;
+            font-size: 55px;
+            color: #b71414;
+        }
+
+        h2 {
+            font-family: "Tahoma";
+            font-weight: 600;
+            font-style: 500px;
+            color: black;
+        }
+
+        canvas {
+
+            background-position: center;
+            background-color: #f6f6f6;
+            border: 5px solid #b71414;
+            background-image: url('reloj.png');
+        }
+    </style>
+</head>
+
+<body>
+    <h1> TORRE DE RELOJ</h1>
+    <h2> Simulacion de reloj </h2>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <aside></aside>
+
+    <script src="utils.js"></script>
+    <script src="./classes/arrow.js"></script>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById('canvas'),
+                context = canvas.getContext('2d'),
+
+
+                vr1 = .00014499999999999997,
+                vr2 = .00174,
+                vr3 = .1047;
+
+            var hora = new Image();
+            hora.src = "hora f.png";
+            var min = new Image();
+            min.src = "min.png";
+            var seg = new Image();
+            seg.src = "seg.png";
+
+            var cir = new Image();
+            cir.src = "circulo .png";
+
+
+            var radianes1 = 0;
+            var radianes2 = 0;
+            var radianes3 = 0;
+            var radianes4 = 0;
+
+            (function drawFrame() {
+                window.requestAnimationFrame(drawFrame, canvas);
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.save();
+                context.translate(300, 300);
+
+                radianes1 += vr1;
+                context.rotate(radianes1); //radians
+                context.drawImage(hora, -hora.width / 2, -hora.height / 2);
+
+                radianes2 += vr2;
+                context.rotate(-radianes1 + radianes2);
+                context.drawImage(min, -min.width / 2, -min.height / 2);
+
+                radianes3 += vr3;
+                context.rotate(-radianes2 + radianes3);
+                context.drawImage(seg, -seg.width / 2, -seg.height / 2);
+
+                radianes4 += vr3;
+                context.drawImage(cir, -cir.width / 2, -cir.height / 2);
+
+                context.restore();
+
+
+            }());
+
+        };
+
+
+
+
+    </script>
+</body>
+
+</html>
